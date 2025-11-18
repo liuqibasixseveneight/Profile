@@ -1,16 +1,31 @@
+import { forwardRef } from 'react';
+import type { HeaderNavbarProps } from './types';
 import {
-  HeaderNavbarInnerWrapper,
+  HeaderNavbarCta,
+  HeaderNavbarLinks,
+  HeaderNavbarLogo,
   HeaderNavbarWrapper,
 } from './HeaderNavbar.style';
-import type { HeaderNavbarProps } from './types';
 
-export const HeaderNavbar = ({}: HeaderNavbarProps) => {
-  return (
-    <HeaderNavbarWrapper>
-      <HeaderNavbarInnerWrapper>
-        <div>J-LYTN</div>
-        <div>[ menu ]</div>
-      </HeaderNavbarInnerWrapper>
-    </HeaderNavbarWrapper>
-  );
-};
+export const HeaderNavbar = forwardRef<HTMLElement, HeaderNavbarProps>(
+  ({}, ref) => {
+    return (
+      <HeaderNavbarWrapper ref={ref}>
+        <HeaderNavbarLogo>
+          <a href='/'>J-LYTN</a>
+        </HeaderNavbarLogo>
+
+        <HeaderNavbarLinks>
+          <a href='/'>Home</a>
+          <a href='/'>About</a>
+          <a href='/'>Projects</a>
+          <a href='/'>Contact</a>
+        </HeaderNavbarLinks>
+
+        <HeaderNavbarCta>
+          <a href='/'>Get in touch</a>
+        </HeaderNavbarCta>
+      </HeaderNavbarWrapper>
+    );
+  }
+);

@@ -1,0 +1,125 @@
+---
+description: Project directory structure and important files organization
+globs: **/*
+alwaysApply: true
+---
+
+# Project Structure
+
+This document outlines the directory structure and important files in the Profile project.
+
+## Root Directory
+
+```
+Profile/
+├── .cursor/              # Cursor IDE configuration
+│   ├── README.md
+│   └── rules/            # Cursor rule files (.mdc)
+├── node_modules/         # Dependencies (gitignored)
+├── public/               # Static assets served directly
+│   └── vite.svg
+├── src/                  # Source code
+├── .gitignore
+├── eslint.config.js      # ESLint configuration
+├── index.html            # HTML entry point
+├── package.json          # Dependencies and scripts
+├── package-lock.json     # Locked dependency versions
+├── README.md             # Project documentation
+├── tsconfig.json         # TypeScript root config
+├── tsconfig.app.json     # TypeScript app config
+├── tsconfig.node.json    # TypeScript Node config
+└── vite.config.ts        # Vite build configuration
+```
+
+## Source Directory (`src/`)
+
+### Main Application Files
+
+- `main.tsx` - React application entry point
+- `App.tsx` - Root application component
+- `App.styles.ts` - Root application styles (styled-components)
+- `index.css` - Global CSS styles
+
+### Components (`src/components/`)
+
+The project follows **Atomic Design** pattern with two main categories:
+
+#### Pages (`src/components/pages/`)
+
+Full page components. Each page has its own directory with:
+
+- `[PageName].tsx` - Component implementation
+- `[PageName].styles.ts` - Component styles
+- `types.ts` - TypeScript types/interfaces
+- `index.ts` - Barrel export
+
+**Current pages:**
+- `About/` - About page component
+- `Home/` - Home page component
+- `index.ts` - Barrel export for all pages
+
+#### UI Components (`src/components/ui/`)
+
+Reusable UI components organized by complexity:
+
+- `atoms/` - Basic building blocks (buttons, inputs, etc.)
+  - `index.ts` - Barrel export
+- `molecules/` - Simple component combinations
+  - `index.ts` - Barrel export
+- `organisms/` - Complex component compositions
+  - `HeaderNavbar/` - Navigation header component
+    - `HeaderNavbar.tsx` - Component implementation
+    - `HeaderNavbar.style.ts` - Component styles
+    - `types.ts` - TypeScript types
+    - `index.ts` - Barrel export
+  - `index.ts` - Barrel export
+- `index.ts` - Barrel export for all UI components
+
+### Assets (`src/assets/`)
+
+Static assets like images, icons, etc.
+
+- `react.svg` - React logo
+
+## Important Configuration Files
+
+### TypeScript Configuration
+
+- `tsconfig.json` - Root TypeScript configuration
+- `tsconfig.app.json` - Application-specific TypeScript config
+- `tsconfig.node.json` - Node.js-specific TypeScript config
+
+### Build & Development
+
+- `vite.config.ts` - Vite bundler configuration
+- `eslint.config.js` - ESLint linting rules
+- `package.json` - Project metadata, dependencies, and scripts
+
+### Entry Points
+
+- `index.html` - HTML template
+- `src/main.tsx` - React application entry point
+
+## Component File Naming Conventions
+
+1. **Component files**: `[ComponentName].tsx`
+2. **Style files**: `[ComponentName].styles.ts` or `[ComponentName].style.ts`
+3. **Type files**: `types.ts` (within component directory)
+4. **Barrel exports**: `index.ts` (in each directory)
+
+## Key Technologies
+
+- **React 19** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Styled Components** - CSS-in-JS styling
+- **GSAP** - Animation library
+- **React Router** - Routing (v7)
+- **Lenis** - Smooth scrolling
+
+## Scripts (from package.json)
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build

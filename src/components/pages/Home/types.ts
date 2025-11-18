@@ -1,1 +1,3 @@
-export type HomeProps = {};
+export type HomeProps = {
+  navRef?: React.RefObject<HTMLElement | null>;
+};
